@@ -3,16 +3,18 @@ package bibliotecadigital.usuarios;
 import java.util.List;
 import java.util.UUID;
 
+import bibliotecadigital.Biblioteca;
 import bibliotecadigital.recursos.Prestamo;
 import bibliotecadigital.recursos.RecursoMultimedia;
+import constants.Constantes;
 
 public class UsuarioPremium extends Usuario {
 	public UsuarioPremium(String nombre, String apellido, String email) {
-		super(nombre, apellido, email, Integer.MAX_VALUE); //TODO 'Integer.MAX_VALUE' Make it a constant
+		super(nombre, apellido, email, Constantes.MAX_PRESTAMOS_USUARIO_PREMIUM);
 	}
 
 	@Override
-	public void prestar(RecursoMultimedia recurso) {
+	public void prestar(Biblioteca biblioteca, RecursoMultimedia recurso) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -31,6 +33,18 @@ public class UsuarioPremium extends Usuario {
 
 	@Override
 	public void verificarVencimiento(Prestamo prestamo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mostrarReseñas(RecursoMultimedia recurso) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void escribirReseña(RecursoMultimedia recurso) {
 		// TODO Auto-generated method stub
 		
 	}

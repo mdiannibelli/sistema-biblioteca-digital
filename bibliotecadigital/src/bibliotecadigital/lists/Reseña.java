@@ -33,8 +33,8 @@ public class Reseña {
 		this.calificacion = calificacion;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public String getUsuarioInfo() {
+		return usuario.getNombre() + " " + usuario.getApellido();
 	}
 
 	public LocalDate getFecha() {
