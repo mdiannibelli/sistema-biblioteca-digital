@@ -15,11 +15,11 @@ public class UsuarioAdministrador extends Usuario implements Administrar {
 	@Override
 	public void prestar(Biblioteca biblioteca, RecursoMultimedia recurso) {}
 	@Override
-	public void renovar(Prestamo prestamo) {}
+	public void renovar(Biblioteca biblioteca, RecursoMultimedia recurso) {}
 	@Override
-	public void devolver(RecursoMultimedia recurso) {}
+	public void devolver(Biblioteca biblioteca, RecursoMultimedia recurso) {}
 	@Override
-	public void verificarVencimiento(Prestamo prestamo) {}
+	public void verificarVencimiento(RecursoMultimedia recurso) {}
 
 	
 	@Override

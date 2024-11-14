@@ -6,9 +6,9 @@ import bibliotecadigital.recursos.RecursoMultimedia;
 
 public interface Gestionar {
 	public void prestar(Biblioteca biblioteca, RecursoMultimedia recurso);
-	public void renovar(Prestamo prestamo);
+	public void renovar(Biblioteca biblioteca, RecursoMultimedia recurso);
 	public void devolver(Biblioteca biblioteca, RecursoMultimedia recurso);
-	public void verificarVencimiento(Prestamo prestamo);
+	public void verificarVencimiento(RecursoMultimedia recurso);
 	public void mostrarReseñas(RecursoMultimedia recurso);
-	public void escribirReseña(RecursoMultimedia recurso);
+	public void escribirReseña(RecursoMultimedia recurso, String descripcion, double calificacion);
 }

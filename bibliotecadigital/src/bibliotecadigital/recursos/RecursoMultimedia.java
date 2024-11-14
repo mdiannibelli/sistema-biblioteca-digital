@@ -64,5 +64,19 @@ public abstract class RecursoMultimedia {
 		this.estado = estado;
 	}
 	
+	public List<Reseña> getReseñas() {
+		return reseñas;
+	}
+
+	public void agregarReseña(Reseña reseña) {
+		this.reseñas.add(reseña);
+	}
+
+	public void setReseñas(List<Reseña> reseñas) {
+		this.reseñas = reseñas;
+	}
+	
+	
+	
 	
 }

@@ -49,6 +49,17 @@ public class Main {
 		admin.mostrarPrestamos(biblioteca);
 		
 		marcos.devolver(biblioteca, pdf);
+		admin.mostrarPrestamos(biblioteca);
+		
+		marcos.escribirReseña(pdf, "Muy bueno y entretenido!", 9.2);
+		marcos.mostrarReseñas(pdf);
+
+		marcos.renovar(biblioteca, pdf);
+		admin.mostrarPrestamos(biblioteca);
+		
+		marcos.verificarVencimiento(pdf);
+		admin.mostrarPrestamos(biblioteca);
+		
 	}
 
 }
