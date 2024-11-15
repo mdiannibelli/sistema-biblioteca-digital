@@ -1,6 +1,7 @@
 package bibliotecadigital;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import bibliotecadigital.enums.EstadoRecurso;
 import bibliotecadigital.enums.Formatos;
@@ -12,14 +13,13 @@ import bibliotecadigital.recursos.RevistaDigitales;
 import bibliotecadigital.usuarios.UsuarioAdministrador;
 import bibliotecadigital.usuarios.UsuarioPremium;
 import bibliotecadigital.usuarios.UsuarioRegular;
-import ui.BibliotecaUI;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
 		// Create library
 		Biblioteca biblioteca = new Biblioteca("Arcos");
-		//System.out.println("Biblioteca" + " " + biblioteca.getNombre() + ", ID: " + biblioteca.getId());
 	
 		// Create users
 		UsuarioRegular marcos = new UsuarioRegular("Marcos", "Iannibelli", "mdiannibelli@gmail.com");
@@ -29,13 +29,15 @@ public class Main {
 		biblioteca.agregarUsuario(thiago);
 		biblioteca.agregarUsuario(admin);
 		
-		// Create resources
+		// Create categories
 		Categoria ficcion = new Categoria("Ficción", "Género para recursos de ciencia ficción");
 		Categoria noticias = new Categoria("Noticias", "Categoría de noticias");
 		Categoria podcasts = new Categoria("Podcasts", "Categoría para podcasts");
 		biblioteca.getCategorias().add(ficcion);
 		biblioteca.getCategorias().add(noticias);
 		biblioteca.getCategorias().add(podcasts);
+		
+		// Create resources
 		LibrosElectronicos pdf = new LibrosElectronicos("Harry Potter y La Piedra Filosofal", LocalDate.now(), ficcion, 9.2, 382, Formatos.PDF, 124.9, "KGJQIRJ29ASFJ");
 		//pdf.mostrarInfo();
 		
@@ -56,26 +58,46 @@ public class Main {
 		// Actions
 		marcos.prestar(biblioteca, pdf);
 		admin.mostrarPrestamos(biblioteca);
+
 		
-		marcos.devolver(biblioteca, pdf);
-		admin.mostrarPrestamos(biblioteca);
-		
+		marcos.devolver(biblioteca, pdf);		
 		thiago.prestar(biblioteca, audioLibro);
 		
-		//TODO Usar un prompt para que el usuario ingrese la puntuación y la reseña
-		marcos.escribirReseña(pdf, "Muy bueno y entretenido!", 9.2);
-		marcos.mostrarReseñas(pdf);
+		admin.mostrarPrestamos(biblioteca);
 
+		// Review
+		System.out.println("Para realizar una reseña introduzca su opinión");
+		String opinion = scn.nextLine();
+		System.out.println("Ahora su puntuación");
+		double puntuacion = scn.nextDouble();
+		marcos.escribirReseña(pdf, opinion, puntuacion);
+		marcos.mostrarReseñas(pdf);
+		
 		marcos.renovar(biblioteca, pdf);
 		admin.mostrarPrestamos(biblioteca);
 		
 		marcos.verificarVencimiento(pdf);
 		admin.mostrarPrestamos(biblioteca);
 		
-		//admin.mostrarCategorias(biblioteca);
+		
+		// ADMINISTRADOR:
+		
+		admin.mostrarCategorias(biblioteca);
+		admin.crearCategoria(biblioteca, new Categoria("Plantas", "Fauna y plantas"));
+		admin.eliminarCategoria(biblioteca, ficcion.getCategoriaId());
+		admin.mostrarCategorias(biblioteca);
+		
+		UsuarioPremium matias = new UsuarioPremium("Matias", "Paz", "matiaspaz@..");
+		admin.crearUsuario(biblioteca, matias);
+		admin.eliminarUsuario(biblioteca, marcos.getId());
+		admin.modificarUsuario(biblioteca, matias.getId(), null, null, null, 0); // no modifies
+		admin.modificarUsuario(biblioteca, thiago.getId(), null, null, "thiagonuevoemail@..", 0); // new email
+		admin.listarUsuarios(biblioteca);
+		
+		
+		//admin.listarRecursos(biblioteca);
 		//admin.mostrarRecursosMasPrestadosPorCategoria(biblioteca);
 		//admin.mostrarRecursosMejorCalificados(biblioteca);
-		admin.listarRecursos(biblioteca);
 	}
 
 }

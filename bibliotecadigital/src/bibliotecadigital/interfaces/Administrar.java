@@ -19,6 +19,7 @@ public interface Administrar {
 	public void eliminarRecurso(Biblioteca biblioteca, UUID recursoId);
 	public void modificarRecurso(Biblioteca biblioteca, UUID recursoId, String titulo, List<Autor> autores, EstadoRecurso estado, Categoria categoria, List<Reseña> reseñas);
 	public void crearCategoria(Biblioteca biblioteca, Categoria categoria);
+	public void eliminarCategoria(Biblioteca biblitoeca, UUID categoriaId);
 	public void mostrarCategorias(Biblioteca biblioteca);
 	public void listarUsuarios(Biblioteca biblioteca);
 	public void crearUsuario(Biblioteca biblioteca, Usuario usuario);

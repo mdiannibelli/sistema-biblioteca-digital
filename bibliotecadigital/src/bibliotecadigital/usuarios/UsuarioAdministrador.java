@@ -120,6 +120,23 @@ public class UsuarioAdministrador extends Usuario implements Administrar {
 		}
 	}
 	
+	@Override
+	public void eliminarCategoria(Biblioteca biblioteca, UUID categoriaId) {
+		Categoria categoriaEncontrada = null;
+		for(Categoria categoria : biblioteca.getCategorias()) {
+			if(categoria.getCategoriaId().equals(categoriaId)) {
+				categoriaEncontrada = categoria;
+			}
+		}
+		if (categoriaEncontrada == null) {
+		    System.out.println("No se ha encontrado la categoría a eliminar");
+		    return;
+		}
+		
+		biblioteca.getCategorias().remove(categoriaEncontrada);
+		System.out.println("Categoria " + categoriaEncontrada.getCategoria() + " eliminada con éxito!");
+	}
+	
 	@Override 
 	public void listarUsuarios(Biblioteca biblioteca) {
 		if(biblioteca.getUsuarios().isEmpty()) {
