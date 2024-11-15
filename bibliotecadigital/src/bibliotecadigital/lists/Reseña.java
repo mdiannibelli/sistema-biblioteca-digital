@@ -11,7 +11,7 @@ public class Reseña {
 	private LocalDate fecha;
 	
 	public Reseña(Usuario usuario, String descripcion, double calificacion) {
-		this.usuario = usuario;
+		this.usuario = usuario; //TODO Receive only user ID
 		this.descripcion = descripcion;
 		this.calificacion = calificacion;
 		this.fecha = LocalDate.now();

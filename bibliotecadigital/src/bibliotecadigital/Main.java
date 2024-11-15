@@ -51,6 +51,7 @@ public class Main {
 		marcos.devolver(biblioteca, pdf);
 		admin.mostrarPrestamos(biblioteca);
 		
+		//TODO Usar un prompt para que el usuario ingrese la puntuación y la reseña
 		marcos.escribirReseña(pdf, "Muy bueno y entretenido!", 9.2);
 		marcos.mostrarReseñas(pdf);
 
