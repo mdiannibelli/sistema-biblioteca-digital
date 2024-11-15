@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import bibliotecadigital.enums.EstadoRecurso;
 import bibliotecadigital.lists.Autor;
-import bibliotecadigital.lists.Genero;
+import bibliotecadigital.lists.Categoria;
 import bibliotecadigital.lists.Reseña;
 
 public abstract class RecursoMultimedia {
@@ -15,16 +15,17 @@ public abstract class RecursoMultimedia {
 	protected String titulo;
 	protected List<Autor> autores;
 	protected LocalDate fecha_publicacion;
-	protected Genero genero;
+	protected Categoria categoria;
 	protected EstadoRecurso estado;
 	protected double rate_promedio;
 	protected List<Reseña> reseñas;
 	
-	public RecursoMultimedia(String titulo, List<Autor> autores, LocalDate fecha_publicacion, Genero genero, EstadoRecurso estado, double rate_promedio, List<Reseña> reseñas) {
+	public RecursoMultimedia(String titulo, List<Autor> autores, LocalDate fecha_publicacion, Categoria categoria, EstadoRecurso estado, double rate_promedio, List<Reseña> reseñas) {
 		this.id = UUID.randomUUID();
 		this.titulo = titulo;
 		this.autores = autores != null ? autores : new ArrayList<>();
 		this.fecha_publicacion = fecha_publicacion != null ? fecha_publicacion : LocalDate.now();
+		this.categoria = categoria;
 		this.estado = estado != null ? estado : estado.DISPONIBLE;
 		this.rate_promedio = rate_promedio;
 		this.reseñas = reseñas != null ? reseñas : new ArrayList<>();

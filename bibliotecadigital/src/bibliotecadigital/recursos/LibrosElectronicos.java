@@ -6,7 +6,7 @@ import java.util.List;
 import bibliotecadigital.enums.EstadoRecurso;
 import bibliotecadigital.enums.Formatos;
 import bibliotecadigital.lists.Autor;
-import bibliotecadigital.lists.Genero;
+import bibliotecadigital.lists.Categoria;
 import bibliotecadigital.lists.Reseña;
 
 public class LibrosElectronicos extends RecursoMultimedia {
@@ -15,8 +15,8 @@ public class LibrosElectronicos extends RecursoMultimedia {
 	protected double tamaño_archivo;
 	protected String ISBN;
 	
-	public LibrosElectronicos(String titulo, List<Autor> autores, LocalDate fecha_publicacion, Genero genero, EstadoRecurso estado, double rate_promedio, List<Reseña> reseñas, int numero_paginas, Formatos formato, double tamaño_archivo, String ISBN) {
-		super(titulo, autores, fecha_publicacion, genero, estado, rate_promedio, reseñas);
+	public LibrosElectronicos(String titulo, List<Autor> autores, LocalDate fecha_publicacion, Categoria categoria, EstadoRecurso estado, double rate_promedio, List<Reseña> reseñas, int numero_paginas, Formatos formato, double tamaño_archivo, String ISBN) {
+		super(titulo, autores, fecha_publicacion, categoria, estado, rate_promedio, reseñas);
 		this.numero_paginas = numero_paginas;
 		this.formato = formato;
 		this.tamaño_archivo = tamaño_archivo;
@@ -24,8 +24,8 @@ public class LibrosElectronicos extends RecursoMultimedia {
 		this.estado = estado != null ? estado : EstadoRecurso.DISPONIBLE;
 	}
 	
-	public LibrosElectronicos(String titulo, LocalDate fecha_publicacion, Genero genero, double rate_promedio, int numero_paginas, Formatos formato, double tamaño_archivo, String ISBN) {
-        super(titulo, null, fecha_publicacion, genero, null, rate_promedio, null);
+	public LibrosElectronicos(String titulo, LocalDate fecha_publicacion, Categoria categoria, double rate_promedio, int numero_paginas, Formatos formato, double tamaño_archivo, String ISBN) {
+        super(titulo, null, fecha_publicacion, categoria, null, rate_promedio, null);
         this.numero_paginas = numero_paginas;
         this.formato = formato;
         this.tamaño_archivo = tamaño_archivo;

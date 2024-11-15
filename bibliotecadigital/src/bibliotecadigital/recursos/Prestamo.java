@@ -17,8 +17,8 @@ public class Prestamo {
 	
 	public Prestamo(Usuario usuario, RecursoMultimedia recurso, LocalDate fechaVencimiento) {
 		this.id = UUID.randomUUID();
-		this.usuario = usuario; //TODO Make composition
-		this.recurso = recurso; //TODO Make composition
+		this.usuario = usuario;
+		this.recurso = recurso;
 		this.fechaInicio = LocalDate.now();
 		this.fechaVencimiento = fechaVencimiento != null ? fechaVencimiento : LocalDate.now().plusDays(Constantes.DIAS_PRESTAMO);
 		this.estado = EstadoPrestamo.ACTIVO;

@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 import bibliotecadigital.enums.EstadoRecurso;
 import bibliotecadigital.enums.Formatos;
-import bibliotecadigital.lists.Genero;
+import bibliotecadigital.lists.Categoria;
+import bibliotecadigital.recursos.Articulo;
 import bibliotecadigital.recursos.AudioLibros;
 import bibliotecadigital.recursos.LibrosElectronicos;
 import bibliotecadigital.recursos.RevistaDigitales;
@@ -16,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Create library
-		Biblioteca biblioteca = new Biblioteca("Arcos", null, null, null);
+		Biblioteca biblioteca = new Biblioteca("Arcos");
 		//System.out.println("Biblioteca" + " " + biblioteca.getNombre() + ", ID: " + biblioteca.getId());
 	
 		// Create users
@@ -28,13 +29,14 @@ public class Main {
 		biblioteca.agregarUsuario(admin);
 		
 		// Create resources
-		Genero ficcion = new Genero("Ficción", "Género para recursos de ciencia ficción");
-		Genero noticias = new Genero("Noticias", "Categoría de noticias");
-		Genero podcasts = new Genero("Podcasts", "Categoría para podcasts");
+		Categoria ficcion = new Categoria("Ficción", "Género para recursos de ciencia ficción");
+		Categoria noticias = new Categoria("Noticias", "Categoría de noticias");
+		Categoria podcasts = new Categoria("Podcasts", "Categoría para podcasts");
 		LibrosElectronicos pdf = new LibrosElectronicos("Harry Potter y La Piedra Filosofal", LocalDate.now(), ficcion, 9.2, 382, Formatos.PDF, 124.9, "KGJQIRJ29ASFJ");
 		//pdf.mostrarInfo();
 		
-		RevistaDigitales revista = new RevistaDigitales("Diario Clarin", LocalDate.now(), noticias, 6.0, 43, "1t8219");
+		Articulo articulo = new Articulo("Peces del Océano en peligro", "Millones de peces en el Océano Atlántico...");
+		RevistaDigitales revista = new RevistaDigitales("Diario Clarin", LocalDate.now(), noticias, 6.0, 43, "1t8219", articulo);
 		//revista.mostrarInfo();
 		
 		AudioLibros audioLibro = new AudioLibros("Jordi Wild Podcast #1", LocalDate.now(), podcasts, 10, 2.20, "ES");

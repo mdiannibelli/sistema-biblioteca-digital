@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import bibliotecadigital.lists.Categoria;
 import bibliotecadigital.recursos.Prestamo;
 import bibliotecadigital.recursos.RecursoMultimedia;
 import bibliotecadigital.usuarios.Usuario;
@@ -15,13 +16,15 @@ public class Biblioteca {
 	public List<RecursoMultimedia> recursos_multimedias;
 	private Set<Usuario> usuarios;
 	private List<Prestamo> prestamos;
+	private Set<Categoria> categorias;
 	 
-	public Biblioteca(String nombre, List<RecursoMultimedia> recursos_multimedias, List<Usuario> usuarios, List<Prestamo> prestamos) {
+	public Biblioteca(String nombre) {
 		this.id = UUID.randomUUID();
 		this.nombre = nombre;
 		this.recursos_multimedias = new ArrayList<RecursoMultimedia>();
 		this.usuarios = new HashSet<Usuario>();
 		this.prestamos = new ArrayList<Prestamo>();
+		this.categorias = new HashSet<Categoria>();
 	}
 
 	public String getNombre() {
@@ -58,6 +61,10 @@ public class Biblioteca {
 	
 	public void agregarRecurso(RecursoMultimedia recurso) {
 		this.recursos_multimedias.add(recurso);	
+	}
+	
+	public void agregarCategoria(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 	
 	public Set<Usuario> getUsuarios() {
