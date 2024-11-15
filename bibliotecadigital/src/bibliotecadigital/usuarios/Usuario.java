@@ -78,6 +78,14 @@ public abstract class Usuario implements Gestionar {
 	public UUID getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", prestamos=" + prestamos + ", favoritos=" + favoritos + ", limite_prestamos_simultaneos="
+				+ limite_prestamos_simultaneos + "]";
+	}
+	
 	
 	
 }

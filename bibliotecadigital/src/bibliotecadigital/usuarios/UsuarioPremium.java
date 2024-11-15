@@ -35,6 +35,7 @@ public class UsuarioPremium extends Usuario {
 		}
 
 		Prestamo nuevoPrestamo = new Prestamo(this, recurso);
+		recurso.incrementarVecesPrestado();
 		this.prestamos.add(nuevoPrestamo);
 		biblioteca.agregarPrestamo(nuevoPrestamo);
 		nuevoPrestamo.setEstado(EstadoPrestamo.ACTIVO);

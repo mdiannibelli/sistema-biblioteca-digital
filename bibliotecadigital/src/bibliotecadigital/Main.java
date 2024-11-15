@@ -12,6 +12,7 @@ import bibliotecadigital.recursos.RevistaDigitales;
 import bibliotecadigital.usuarios.UsuarioAdministrador;
 import bibliotecadigital.usuarios.UsuarioPremium;
 import bibliotecadigital.usuarios.UsuarioRegular;
+import ui.BibliotecaUI;
 
 public class Main {
 
@@ -32,6 +33,9 @@ public class Main {
 		Categoria ficcion = new Categoria("Ficción", "Género para recursos de ciencia ficción");
 		Categoria noticias = new Categoria("Noticias", "Categoría de noticias");
 		Categoria podcasts = new Categoria("Podcasts", "Categoría para podcasts");
+		biblioteca.getCategorias().add(ficcion);
+		biblioteca.getCategorias().add(noticias);
+		biblioteca.getCategorias().add(podcasts);
 		LibrosElectronicos pdf = new LibrosElectronicos("Harry Potter y La Piedra Filosofal", LocalDate.now(), ficcion, 9.2, 382, Formatos.PDF, 124.9, "KGJQIRJ29ASFJ");
 		//pdf.mostrarInfo();
 		
@@ -56,6 +60,8 @@ public class Main {
 		marcos.devolver(biblioteca, pdf);
 		admin.mostrarPrestamos(biblioteca);
 		
+		thiago.prestar(biblioteca, audioLibro);
+		
 		//TODO Usar un prompt para que el usuario ingrese la puntuación y la reseña
 		marcos.escribirReseña(pdf, "Muy bueno y entretenido!", 9.2);
 		marcos.mostrarReseñas(pdf);
@@ -66,6 +72,10 @@ public class Main {
 		marcos.verificarVencimiento(pdf);
 		admin.mostrarPrestamos(biblioteca);
 		
+		//admin.mostrarCategorias(biblioteca);
+		//admin.mostrarRecursosMasPrestadosPorCategoria(biblioteca);
+		//admin.mostrarRecursosMejorCalificados(biblioteca);
+		admin.listarRecursos(biblioteca);
 	}
 
 }

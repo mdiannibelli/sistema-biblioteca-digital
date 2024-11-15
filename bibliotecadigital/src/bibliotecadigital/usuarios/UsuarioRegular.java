@@ -37,6 +37,7 @@ public class UsuarioRegular extends Usuario {
 		}
 		// 4. Crear el prestamo 
 		Prestamo nuevoPrestamo = new Prestamo(this, recurso);
+		recurso.incrementarVecesPrestado();
 
 		// 5. Agregar el prestamo a la lista de prestamos del usuario
 		this.prestamos.add(nuevoPrestamo);

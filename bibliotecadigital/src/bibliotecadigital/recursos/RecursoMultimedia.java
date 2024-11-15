@@ -19,6 +19,7 @@ public abstract class RecursoMultimedia {
 	protected EstadoRecurso estado;
 	protected double rate_promedio;
 	protected List<Reseña> reseñas;
+	protected int vecesPrestado;
 	
 	public RecursoMultimedia(String titulo, List<Autor> autores, LocalDate fecha_publicacion, Categoria categoria, EstadoRecurso estado, double rate_promedio, List<Reseña> reseñas) {
 		this.id = UUID.randomUUID();
@@ -29,6 +30,7 @@ public abstract class RecursoMultimedia {
 		this.estado = estado != null ? estado : estado.DISPONIBLE;
 		this.rate_promedio = rate_promedio;
 		this.reseñas = reseñas != null ? reseñas : new ArrayList<>();
+		this.vecesPrestado = 0;
 	}
 	
 	public void mostrarInfo() {
@@ -41,10 +43,12 @@ public abstract class RecursoMultimedia {
 		System.out.println("Fecha de publicación: " + fecha_publicacion);
 		System.out.println("Estado del recurso: " + estado);
 		System.out.println("Puntuación: " + rate_promedio + "/10");
+		System.out.println("Cantidad de veces prestado: " + vecesPrestado);
 		System.out.println("Reseñas: " + (reseñas.size() == 0 ? "No hay reseñas" : ""));
 		for(Reseña reseña : reseñas) {
 			System.out.println(reseña.getUsuarioInfo() + " " + reseña.getCalificacion() + ": " + reseña.getDescripcion());
 		}
+		System.out.println("-------------------------");
 	}
 	
 	public UUID getUuid() {
@@ -71,6 +75,10 @@ public abstract class RecursoMultimedia {
 		this.estado = estado;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
@@ -86,6 +94,14 @@ public abstract class RecursoMultimedia {
 	public void setReseñas(List<Reseña> reseñas) {
 		this.reseñas = reseñas;
 	}
+	
+	public int getVecesPrestado() {
+        return vecesPrestado;
+    }
+	
+	public void incrementarVecesPrestado() {
+        this.vecesPrestado++;
+    }
 	
 	
 	
