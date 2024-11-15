@@ -22,7 +22,7 @@ public class RevistaDigitales extends RecursoMultimedia {
 		this.numero_edicion = numero_edicion;
 		this.periodicidad = periodicidad != null ? periodicidad : PeriodicidadRevista.SEMNANAL;
 		this.ISSN = ISSN;
-		this.lista_articulos = new ArrayList<>();
+		this.lista_articulos = new ArrayList<Articulo>();
         this.lista_articulos.add(articulo);
 	}
 	
@@ -54,8 +54,14 @@ public class RevistaDigitales extends RecursoMultimedia {
 		ISSN = iSSN;
 	}
 
-	public List<Articulo> getLista_articulos() {
-		return lista_articulos;
+	public void getLista_articulos() {
+		for(Articulo articulo : this.lista_articulos) {
+			System.out.println(articulo.getTitulo());
+		}
+	}
+	
+	public void agregarOtroArticulo(Articulo nuevoArticulo) {
+		this.lista_articulos.add(nuevoArticulo);
 	}
 
 	public void setLista_articulos(List<Articulo> lista_articulos) {

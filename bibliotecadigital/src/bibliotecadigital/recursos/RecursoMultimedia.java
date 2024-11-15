@@ -47,7 +47,9 @@ public abstract class RecursoMultimedia {
 		}
 	}
 	
-	
+	public UUID getUuid() {
+		return id;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -60,9 +62,17 @@ public abstract class RecursoMultimedia {
 	public EstadoRecurso getEstado() {
 		return estado;
 	}
+	
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
+	}
 
 	public void setEstado(EstadoRecurso estado) {
 		this.estado = estado;
+	}
+	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 	public List<Reseña> getReseñas() {

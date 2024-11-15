@@ -35,8 +35,11 @@ public class Main {
 		LibrosElectronicos pdf = new LibrosElectronicos("Harry Potter y La Piedra Filosofal", LocalDate.now(), ficcion, 9.2, 382, Formatos.PDF, 124.9, "KGJQIRJ29ASFJ");
 		//pdf.mostrarInfo();
 		
-		Articulo articulo = new Articulo("Peces del Océano en peligro", "Millones de peces en el Océano Atlántico...");
-		RevistaDigitales revista = new RevistaDigitales("Diario Clarin", LocalDate.now(), noticias, 6.0, 43, "1t8219", articulo);
+		Articulo articulo1 = new Articulo("Peces del Océano en peligro", "Millones de peces en el Océano Atlántico...");
+		Articulo articulo2 = new Articulo("El tiburón asiatico más peligroso", "Un tiburón nunca antes visto...");
+		RevistaDigitales revista = new RevistaDigitales("Diario Clarin", LocalDate.now(), noticias, 6.0, 43, "1t8219", articulo1);
+		revista.agregarOtroArticulo(articulo2);
+		//revista.getLista_articulos();
 		//revista.mostrarInfo();
 		
 		AudioLibros audioLibro = new AudioLibros("Jordi Wild Podcast #1", LocalDate.now(), podcasts, 10, 2.20, "ES");
