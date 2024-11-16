@@ -1,18 +1,23 @@
 package bibliotecadigital;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 import bibliotecadigital.enums.EstadoRecurso;
 import bibliotecadigital.enums.Formatos;
+import bibliotecadigital.interfaces.SistemaRecomendaciones;
 import bibliotecadigital.lists.Categoria;
 import bibliotecadigital.recursos.Articulo;
 import bibliotecadigital.recursos.AudioLibros;
 import bibliotecadigital.recursos.LibrosElectronicos;
+import bibliotecadigital.recursos.RecursoMultimedia;
 import bibliotecadigital.recursos.RevistaDigitales;
 import bibliotecadigital.usuarios.UsuarioAdministrador;
 import bibliotecadigital.usuarios.UsuarioPremium;
 import bibliotecadigital.usuarios.UsuarioRegular;
+import recomendaciones.RecomendacionesPorCalificaciones;
+import recomendaciones.RecomendacionesPorHistorial;
 
 public class Main {
 
@@ -98,6 +103,27 @@ public class Main {
 		//admin.listarRecursos(biblioteca);
 		//admin.mostrarRecursosMasPrestadosPorCategoria(biblioteca);
 		//admin.mostrarRecursosMejorCalificados(biblioteca);
+		
+		
+		SistemaRecomendaciones recomendarPorCalificaciones = new RecomendacionesPorCalificaciones();
+		SistemaRecomendaciones recomendarPorHistorial = new RecomendacionesPorHistorial();
+		
+		List<RecursoMultimedia> recomendacionesHistorial = recomendarPorHistorial.obtenerRecomendaciones(biblioteca, thiago);
+		List<RecursoMultimedia> recomendacionesCalificaciones = recomendarPorCalificaciones.obtenerRecomendaciones(biblioteca, thiago);
+		if(recomendacionesHistorial == null) {
+			System.out.println("No se ha podido obtener recomendaciones por historial");
+		} else {
+			System.out.println("Recomendaciones por historial de " + thiago.getNombre() + ":");
+			recomendacionesHistorial.forEach(r -> System.out.println(r.getTitulo()));			
+		}
+		
+		if(recomendacionesCalificaciones == null) {
+			System.out.println("No se ha podido obtener recomendaciones por calificaciones");
+		} else {
+			System.out.println("Recomendaciones por calificación de " + thiago.getNombre() + ":");
+	        recomendacionesCalificaciones.forEach(r -> System.out.println(r.getTitulo()));
+		}
+		
 	}
 
 }
